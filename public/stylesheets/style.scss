@@ -1,0 +1,986 @@
+@import "../libs/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Roboto&subset=cyrillic');
+@font-face {
+  font-family: "Myriad Pro Regular";
+  src: url("../fonts/MyriadPro-Regular.otf") format("opentype");
+}@font-face {
+  font-family: "Myriad Pro Bold";
+  src: url("../fonts/MyriadPro-Bold.otf") format("opentype");
+}
+
+html {
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box;
+  font-family:'Ubuntu', sans-serif;
+  cursor: default;
+  letter-spacing: 1px;
+}
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+@function rem($size) {
+  @return $size / 16 * 1rem;
+}
+*{
+  @media (max-width: 1199px) {
+    font-size: 13px;
+  }
+  @media (max-width: 991px) {
+    font-size: 12px;
+  }
+  @media (max-width: 880px) {
+    font-size: 10px;
+  }
+  @media (max-width: 575px) {
+    font-size: 8px;
+  }
+}
+
+body {
+  background-color: #091234;
+}
+
+.cd-top {
+  z-index: 1000;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  position: fixed;
+  bottom: 40px;
+  right: 10px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  /* image replacement properties */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  background: rgba(232, 98, 86, 0.8) url(../images/cd-top-arrow.svg) no-repeat center 50%;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+  transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+}
+
+.cd-top.cd-top--show,
+.cd-top.cd-top--fade-out,
+.cd-top:hover {
+  -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+  transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+}
+
+.cd-top.cd-top--show {
+  /* the button becomes visible */
+  visibility: visible;
+  opacity: 1;
+}
+
+.cd-top.cd-top--fade-out {
+  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+  opacity: .5;
+}
+
+.cd-top:hover {
+  background-color: #e86256;
+  opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .cd-top {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .cd-top {
+    height: 60px;
+    width: 60px;
+    right: 30px;
+    bottom: 30px;
+  }
+}
+
+.desktop-version {
+  .main-part {
+    position: relative;
+    background-image: url(../images/main-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 0;
+    width: 100%;
+    padding: 1rem 8rem 48% 8rem !important;
+    @media(max-width: 1320px) {
+      padding: 1rem 2rem 48% 2rem !important;
+    }
+    .pre-bg {
+      z-index: 2;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background-image: url(../images/pre-bg.png);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .mobile-center {
+      z-index:1;
+      width: 20%;
+      height: auto;
+      position: absolute;
+      margin: auto;
+      left: 0;
+      right: 0;
+      bottom:0;
+    }
+    .header {
+      .links {
+        z-index: 3;
+      }
+
+      h3 {
+        z-index: 3;
+        font-family: 'Roboto', sans-serif;
+        color: #177fff;
+        font-size: 1.6rem;
+      }
+      a {
+        z-index: 3;
+        cursor: pointer;
+        transition: .3s;
+        text-decoration: none;
+        font-size: 1rem;
+        color: #fff;
+      }
+      a:hover, a:active {
+        transition: .3s;
+        color: #177fff;
+      }
+      a:last-child {
+        padding:6px 30px;
+        border: 1px white solid;
+        border-radius: 20px;
+      }
+      a:last-child:hover, a:last-child:active {
+        border: 1px #177fff solid;
+      }
+    }
+
+    .body-inside {
+      z-index: 3;
+      h3 {
+        z-index: 3;
+        position: relative;
+        font-family: 'Myriad Pro Bold',sans-serif;
+        color: #fff;
+        font-size:4rem;
+        @media (max-width: 870px) {
+          font-size: 2rem;
+          line-height: 100%;
+        }
+        span {
+          z-index: 3;
+          font-family: 'Myriad Pro Regular',sans-serif;
+          color: #2989fe;
+          font-size: 3.5rem;
+          @media (max-width: 870px) {
+            font-size: 1.8rem;
+            line-height: 100%;
+          }
+        }
+      }
+      p {
+        z-index: 3;
+        position: relative;
+        font-family: 'Myriad Pro Regular',sans-serif;
+        color: #2989fe;
+        span {
+          font-family: 'Myriad Pro Bold',sans-serif;
+          color: #51fe29;
+        }
+      }
+    }
+  }
+
+  .for-whom {
+    position: relative;
+    h3 {
+      font-family: 'Myriad Pro Bold',sans-serif;
+      margin-left: 7rem;
+      font-size: 2rem;
+      position: relative;
+      &:before {
+        position:absolute;
+        bottom: -10px;
+        left:0;
+        width:7rem;
+        border-bottom:1px solid #0081d7;
+        content:"";
+      }
+    }
+    h4 {
+      font-family: 'Myriad Pro Bold',sans-serif;
+      font-size: 2rem;
+      @media (max-width: 1200px) {
+        font-size: 1.6rem;
+      }
+      span {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        font-size: 3rem;
+        @media (max-width: 1200px) {
+          font-size: 2rem;
+        }
+      }
+    }
+    .left-text, .right-text {
+      margin-top: 13rem;
+    }
+    .mark-text {
+      img {
+        width: 1rem;
+        height:auto;
+      }
+    }
+    .text-and-mobile {
+      z-index: 1;
+      background-image: url(../images/phones.png);
+      background-repeat:no-repeat;
+      background-size: contain;
+      position: relative;
+      .mobile-center {
+        width: 20%;
+        height:auto;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top:0;
+        left: 0;
+        right: 0;
+      }
+      .mobile-center2 {
+        width: 20%;
+        @media (max-width: 1200px) {
+          height: 0;
+        }
+      }
+    }
+
+    .photos {
+      background-color: #fff;
+      height: 20rem;
+      position: relative;
+      h5 {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        opacity:.6;
+        mix-blend-mode: overlay;
+        z-index: 1;
+        color: white;
+        font-size: 12rem;
+        width: 100%;
+        height: 70%;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+      }
+      img {
+        opacity:.6;
+        height: 100%;
+        width:20%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .bg-for-whom {
+      position: absolute;
+      bottom:0;
+      left:0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  .download-app {
+    position: relative;
+    width: 100%;
+    height: 45rem;
+    .text-border {
+      z-index: 1;
+      border: 4px solid rgba(255,255,255,.68);
+      position: absolute;
+      width: 45%;
+      height: 50%;
+      margin: auto;
+      top: 200px; left: -25%; bottom: 0; right: 0;
+      @media(min-width: 768px) and (max-width: 1580px) {
+        width: 50rem;
+        height: 19rem;
+        margin: auto;
+        top: 20rem;
+        left: -25%;
+        bottom: 0;
+        right: 0;
+      }
+      h4 {
+        font-family: 'Myriad Pro Regular',sans-serif;
+        font-size: 2rem;
+        span {
+          font-family: 'Myriad Pro Bold',sans-serif;
+          color: #449800;
+          font-size: 2rem;
+        }
+      }
+      p {
+        font-family: 'Myriad Pro Regular',sans-serif;
+        font-size: 1.6rem;
+        line-height:110%;
+      }
+    }
+
+    .mobile {
+      z-index: 2;
+      position: absolute;
+      margin:auto;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 20%;
+      height:auto;
+    }
+
+    .download-pic {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: auto;
+      width: 70%;
+    }
+  }
+
+  .how-connect {
+    position: relative;
+    height: 100vh;
+
+    h3 {
+      padding-top: 5rem;
+      font-family: 'Myriad Pro Bold',sans-serif;
+      margin-left: 7rem;
+      font-size: 2rem;
+      position: relative;
+      &:before {
+        position:absolute;
+        bottom: -10px;
+        left:0;
+        width:7rem;
+        border-bottom:1px solid #0081d7;
+        content:"";
+      }
+    }
+
+    .circles {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      margin: auto;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom:0;
+    }
+    .phone {
+      z-index: 2;
+      position: absolute;
+      margin: auto;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom:0;
+      width: 20%;
+      height:auto;
+    }
+
+    .left-side {
+    }
+
+    .right-side {
+      .big-gift {
+        width: 15rem;
+        height:auto;
+        position: absolute;
+        bottom:50%;
+      }
+    }
+
+    .stages {
+      z-index: 3;
+      .circle {
+        width: 7rem;
+        height: 7rem;
+        border: 2px solid rgba(255,255,255,.2);
+        border-radius: 50%;
+        .transparent-circle {
+          width: 80%;
+          height: 80%;
+          background-color: #5b7f3e;
+          border-radius: 50%;
+        }
+      }
+      p {
+        letter-spacing: 0;
+        font-family:'Ubuntu', sans-serif;
+        font-size: 1.1rem;
+      }
+
+      .line-and-texts {
+        hr {
+          width:6rem;
+          border-top:2px solid #5e70b6;
+        }
+        p {
+          letter-spacing: 1px;
+          font-family:'Ubuntu', sans-serif;
+          font-size: 1rem;
+        }
+        h5 {
+          line-height: 150%;
+          font-family: 'Myriad Pro Bold',sans-serif;
+          font-size: 1.5rem;
+          color: #93c4ff;
+          span {
+            color: #449800;
+            font-family: 'Myriad Pro Bold',sans-serif;
+          }
+        }
+      }
+    }
+  }
+
+  .app-capability {
+    position: relative;
+    background-image: url(../images/capability-bg.png);
+    background-size:100% 105%;
+    h3 {
+      margin-bottom: 7rem;
+      padding-top: 5rem;
+      font-family: 'Myriad Pro Bold',sans-serif;
+      margin-left: 7rem;
+      font-size: 2rem;
+      position: relative;
+      &:before {
+        position:absolute;
+        bottom: -10px;
+        left:0;
+        width:7rem;
+        border-bottom:1px solid #0081d7;
+        content:"";
+      }
+    }
+    .left-side {
+      padding-left: 10%;
+    }
+    .right-side {
+      padding-left: 10%;
+
+    }
+    .capabilities {
+      img {
+        height: 78px;
+        width:78px;
+        margin-bottom: 2rem;
+      }
+      h4 {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        font-size: 1.7rem;
+        color: #fefefe;
+        width: 70%;
+      }
+      .text-mark {
+        width: 70%;
+        img {
+          height:19px;
+          width: 18px;
+          margin: 0;
+        }
+        p {
+          font-family:'Ubuntu', sans-serif;
+          letter-spacing:0;
+        }
+      }
+    }
+    .headset-img {
+      height:auto;
+      width:18rem;
+    }
+    .phone {
+      position: absolute;
+      top: 25px;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      width: 20%;
+      height:auto;
+      @media (max-width: 1138px) {
+        top: 5rem;
+      }
+    }
+    .phone2 {
+      position: absolute;
+      bottom:0;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      width: 20%;
+      height: auto;
+    }
+  }
+
+  .cost {
+    background-color: #0081d7;
+    img {
+      width: 100%;
+      height:auto;
+      object-fit: cover;
+      object-position: center ;
+    }
+    h3 {
+      margin-bottom: 7rem;
+      padding-top: 5rem;
+      font-family: 'Myriad Pro Bold',sans-serif;
+      margin-left: 7rem;
+      font-size: 2rem;
+      position: relative;
+      &:before {
+        position:absolute;
+        bottom: -10px;
+        left:0;
+        width:7rem;
+        border-bottom:1px solid #fff;
+        content:"";
+      }
+    }
+    p {
+      font-family: 'Ubuntu',sans-serif;
+      letter-spacing:0;
+      margin-left: 7rem;
+      margin-right: 5rem;
+    }
+  }
+
+  .feedbacks {
+    padding: 9rem 17rem;
+    background-color: #fff;
+
+
+    .carousel-item {
+      h3 {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        font-size: 1.2rem;
+        color: #0081d7;
+        span {
+          font-family: 'Myriad Pro Bold',sans-serif;
+          font-size:1.5rem;
+          color: #0081d7;
+        }
+      }
+      p {
+        color: #444444;
+        font-size: 1.1rem;
+        font-family: 'Myriad Pro Regular',sans-serif;
+        width: 70%;
+        text-align: center;
+        line-height: 34px;
+
+      }
+    }
+
+    h5 {
+      display: inline-block;
+      padding: 10px;
+      background: #B9121B;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .p {
+      text-align: center;
+      padding-top: 40px;
+      font-size: 13px;
+    }
+    .carousel-indicators {
+      bottom: -3rem;
+    }
+    .carousel-indicators li {
+      height: 17px;
+      width: 17px;
+      border-radius: 50%;
+      background-color: #243db3;
+    }
+    .carousel-indicators .active {
+      background-color: #0081d7;
+    }
+    .carousel-inner {
+      .active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+
+  .footer {
+    font-family: 'Ubuntu', sans-serif;
+    margin-left: 17rem;
+    p {
+      font-size: 0.8rem;
+    }
+    .cards {
+      height: 28px;
+      width:auto;
+    }
+    .cards2 {
+      height: 17px;
+      width:auto;
+    }
+    .prava {
+      opacity:.5;
+      letter-spacing:0;
+      line-height: 100%;
+      font-size: .9rem;
+    }
+  }
+}
+
+.mobile-version {
+  * {
+    font-family: 'Myriad Pro Bold',sans-serif;
+    line-height: 108%;
+    color: #fff;
+  }
+  .header-wrap{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    background-color: #000532 ;
+    ul{
+      list-style: none;
+      padding-left: 0!important;
+    }
+    a, a:hover, a:active, a:focus, a:visited {
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      font-size: 1.6rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+  .header {
+    height: 9rem;
+    width: 100%;
+    h3{
+      font-size: 2rem;
+    }
+    .burger{
+      width: 6rem;
+      height: 2.6rem;
+      div{
+        height: 1px;
+        width: 4rem;
+        background-color: white;
+      }
+    }
+
+  }
+
+  .main-section {
+    background-image: url(../images/main-bg.png);
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    padding-top: 9rem!important;
+    h3 {
+      font-family: 'Myriad Pro Bold',sans-serif;
+      color: #fff;
+      font-size:40px;
+      line-height: 100%;
+      span {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        color: #2989fe;
+        font-size: 32px;
+      }
+    }
+    p {
+      font-family: 'Myriad Pro Regular',sans-serif;
+      color: #2989fe;
+      font-size: 16px;
+      span {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        color: #51fe29;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .main-text {
+    margin-bottom: 50px;
+    color: white;
+      font-family: 'Myriad Pro Bold',sans-serif;
+      font-size: 24px;
+      position: relative;
+      &:before {
+        position:absolute;
+        bottom: -10px;
+        left:0;
+        width:7rem;
+        border-bottom:3px solid #0081d7;
+        content:"";
+      }
+  }
+
+  .for-whom {
+    background-image: url(../images/bg-for-whom.png);
+    background-position: bottom;
+    h3 {
+      font-size: 18px;
+    }
+    .mark-text {
+      img {
+        width: 30px;
+        height:auto;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+
+    .photos {
+      background-color: #fff;
+      position: relative;
+      h5 {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        mix-blend-mode: overlay;
+        z-index: 1;
+        color: #0f31b6;
+        font-size: 100px;
+        width: 100%;
+        height: 70%;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        text-align: center;
+      }
+      img {
+        opacity:.6;
+        height: 100%;
+        width:50%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+
+  .install-app {
+    span {
+      font-size: 24px;
+      color: #449800;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  .how-connect {
+    .circle {
+      width: 80px;
+      height: 80px;
+      border: 2px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      .transparent-circle {
+        width: 80%;
+        height: 80%;
+        background-color: #5b7f3e;
+        border-radius: 50%;
+      }
+    }
+    p {
+      letter-spacing: 0;
+      font-family:'Ubuntu', sans-serif;
+      font-size: 16px;
+    }
+
+    .line-and-texts {
+      width: 80%;
+      p {
+        letter-spacing: 1px;
+        font-family:'Ubuntu', sans-serif;
+        font-size: 14px;
+      }
+      h5 {
+        line-height: 150%;
+        font-family: 'Myriad Pro Bold',sans-serif;
+        font-size: 14px;
+        color: #93c4ff;
+        span {
+          font-size: 16px;
+          color: #449800;
+          font-family: 'Myriad Pro Bold',sans-serif;
+        }
+      }
+    }
+  }
+  .abilities  {
+    background-image: url(../images/capability-bg.png);
+    background-size:100% 105%;
+
+    .capabilities {
+      img {
+        height: 78px;
+        width:78px;
+        margin-bottom: 2rem;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      h4 {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        font-size: 18px;
+        color: #fefefe;
+      }
+      .text-mark {
+        img {
+          height:25px;
+          width: 25px;
+          margin: 0;
+          max-width: 25%;
+        }
+        p {
+          max-width: 75%;
+          font-size: 14px;
+          font-family:'Ubuntu', sans-serif;
+          letter-spacing:0;
+        }
+      }
+    }
+  }
+  .cost {
+    background-color: #0081d7;
+    .main-text:before {
+      border-bottom-color: white;
+    }
+    p {
+      font-family:'Ubuntu', sans-serif;
+      line-height: 130%;
+      font-size: 14px;
+    }
+    img {
+      width:100%;
+      height:auto;
+      object-fit: contain;
+    }
+  }
+  .feedbacks {
+    background-color: #fff;
+    .carousel-item {
+      h3 {
+        font-family: 'Myriad Pro Bold',sans-serif;
+        font-size: 16px;
+        color: #0081d7;
+        span {
+          font-family: 'Myriad Pro Bold',sans-serif;
+          font-size: 18px;
+          color: #0081d7;
+        }
+      }
+      p {
+        color: #444444;
+        font-size: 14px;
+        font-family: 'Myriad Pro Regular',sans-serif;
+        text-align: center;
+        line-height: 100%;
+
+      }
+    }
+
+    h5 {
+      display: inline-block;
+      padding: 10px;
+      background: #B9121B;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .p {
+      text-align: center;
+      padding-top: 40px;
+      font-size: 13px;
+    }
+    .carousel-indicators {
+      bottom: -3rem;
+    }
+    .carousel-indicators li {
+      height: 10px;
+      width: 10px;
+      border-radius: 50%;
+      background-color: #243db3;
+    }
+    .carousel-indicators .active {
+      background-color: #0081d7;
+    }
+    .carousel-inner {
+      .active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  .footer {
+    p {
+      font-size: 14px;
+      font-family: 'Ubuntu', sans-serif;
+    }
+    a {
+      font-size: 16px;
+      font-family: 'Ubuntu', sans-serif;
+      text-align: center;
+    }
+    .cards {
+      height: 28px;
+      width:auto;
+    }
+    .cards2 {
+      height: 17px;
+      width:auto;
+    }
+    .prava {
+      opacity:.5;
+      letter-spacing:0;
+      line-height: 100%;
+      font-size: 11px;
+    }
+  }
+  .mobile-center {
+    height: 400px;
+    width: auto;
+    object-fit: contain;
+  }
+}
